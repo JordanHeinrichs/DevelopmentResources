@@ -15,7 +15,7 @@ body {
     background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
     display: flex;
     flex-direction: column;
-    font: 15px arial, sans-serif;
+    font: 1.0em arial, sans-serif;
     color: white;
 }
 
@@ -30,7 +30,7 @@ body {
     width: 5em;
     height: 3em;
     animation: spin 5s linear infinite;
-    font-size: 20px;
+    font-size: 1.3em;
     text-decoration: none;
     border: 2px solid white;
 }
@@ -55,7 +55,7 @@ body {
 }
 
 .infoBox {
-    width: 200px;
+    min-width: 200px;
     height: 200px;
     margin-bottom: 20px;
     animation: infoBoxBackground 5s linear infinite;
