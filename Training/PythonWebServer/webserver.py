@@ -2,12 +2,25 @@
 
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import sys
+import psutil
+import json
+from datetime import datetime
 
 class SoarWebServer(SimpleHTTPRequestHandler):
 
     def do_POST(self):
-        self.wfile.write("Send your POST response here!")
-
+        total_cpu = psutil.cpu_count()
+        cpu_usage = psutil.cpu_percent()
+        time = datetime.now().time()
+        memory = psutil.virtual_memory()
+        total_ram = "{0:.2f}".format(memory.total / pow(2, 30))
+        used_ram = "{0:.2f}".format(memory.used / pow(2, 30))
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        json_str = json.dumps({'time': time.strftime("%H:%M:%S"), 'totalCpu': total_cpu,
+                          'cpuUsage': cpu_usage, 'totalRam': total_ram, 'usedRam': used_ram})
+        self.wfile.write(json_str.encode())
 
 def main():
     if len(sys.argv) != 2:
