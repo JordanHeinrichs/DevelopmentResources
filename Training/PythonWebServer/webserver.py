@@ -10,7 +10,16 @@ class SoarWebServer(SimpleHTTPRequestHandler):
 
 
 def main():
-    port = int(sys.argv[1]) # Error check this!
+    if len(sys.argv) != 2:
+        print("Server takes in a single argumenet of the port")
+        print("Usage: python webserver.py <portnum>")
+        return
+
+    port = int(sys.argv[1])
+    if port < 1024:
+        print("Port number must be over 1024")
+        return
+
     print('Starting server on port ' + str(port) + '...')
 
     server_address = ('', port)
