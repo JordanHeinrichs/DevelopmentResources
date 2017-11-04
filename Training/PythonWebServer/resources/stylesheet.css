@@ -3,3 +3,89 @@ h1 {
 	text-align: center;
 	color: red;
 }
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+body {
+    background-repeat: no-repeat;
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    display: flex;
+    flex-direction: column;
+    font: 15px arial, sans-serif;
+    color: white;
+}
+
+.buttonContainer {
+    margin: 40px 0;
+    align-self: center;
+}
+
+.buttonContainer button {
+    background: orange;
+    border-radius: 50%;
+    width: 5em;
+    height: 3em;
+    animation: spin 5s linear infinite;
+    font-size: 20px;
+    text-decoration: none;
+    border: 2px solid white;
+}
+
+.buttonContainer button:hover {
+    background: pink;
+}
+
+.buttonContainer button:active {
+    animation: spin 5s linear infinite, infoBoxBackground 1s linear infinite;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.information {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
+}
+
+.infoBox {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    animation: infoBoxBackground 5s linear infinite;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.data {
+    margin: 10px;
+}
+
+@keyframes infoBoxBackground
+{
+    0%   {
+            background:red;
+            border:2px solid blue;
+         }
+    25%  {
+            background:yellow;
+            border:2px solid green;
+         }
+    50% {
+            background:blue;
+            border:2px solid red;
+         }
+    100% {
+            background:green;
+            border:2px solid yellow;
+         }
+}
